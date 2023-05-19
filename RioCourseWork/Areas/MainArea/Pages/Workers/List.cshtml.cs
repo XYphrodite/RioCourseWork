@@ -14,7 +14,7 @@ namespace RioCourseWork.Areas.MainArea.Workers
         }
 
         public IEnumerable<Person> Persons { get; set; } = new List<Person>();
-        public async void OnGet()
+        public async Task OnGet()
         {
             Persons = await repo.GetPersons();
         }
