@@ -1,5 +1,22 @@
 ﻿@page
 @model RioCourseWork.Areas.MainArea.Workers.ListModel
 @{
-    Layout = "_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div>
+
+    @if (Model.Persons.Count() > 0)
+    {
+        <div class="row">
+            @foreach (var person in Model.Persons)
+            {
+
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-center text-danger">Ничего не найдено</h2>
+    }
+
+</div>

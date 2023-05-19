@@ -1,12 +1,22 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RioCourseWork.Data;
+using RioCourseWork.Models;
 
 namespace RioCourseWork.Areas.MainArea.Workers
 {
     public class ListModel : PageModel
     {
-        public void OnGet()
+        private readonly Repository repo;
+
+        public ListModel(Repository repo)
         {
+            this.repo = repo;
+        }
+
+        public IEnumerable<Person> Persons { get; set; } = new List<Person>();
+        public async void OnGet()
+        {
+            Persons = await repo.GetPersons();
         }
     }
 }
