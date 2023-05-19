@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using RioCourseWork.Data;
+using System;
 
 internal class Program
 {
@@ -25,6 +26,12 @@ internal class Program
             app.UseExceptionHandler("/Home/Error");
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
+        }
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
+            Initializer.Initialize(dbContext);
         }
         //var cxt = app.Services.GetRequiredService<ApplicationContext>();
         //Initializer.Initialize(cxt);

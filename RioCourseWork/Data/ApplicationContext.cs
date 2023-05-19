@@ -5,13 +5,13 @@ namespace RioCourseWork.Data
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Person> Persons;
-        public DbSet<Record> Records;
+        public ApplicationContext(DbContextOptions options) : base(options) { }
+        public DbSet<Person> Persons { get; set; }
+        public DbSet<Record> Records { get; set; }
         //public DbSet<Position> Positions;
-        public ApplicationContext(DbContextOptions options) : base(options)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

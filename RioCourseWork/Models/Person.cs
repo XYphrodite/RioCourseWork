@@ -9,7 +9,7 @@ namespace RioCourseWork.Models
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-        public DateOnly Birthday { get; set; }
+        public DateTime Birthday { get; set; }
         //public int PositionId { get; set; }
         //public Position Position { get; set; }
         public List<Record> Records { get; set; } = new();
