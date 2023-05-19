@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div>
-    <button asp-page="Create" class="btn btn-success">Добавить</button>
+    <a href="Create" class="btn btn-primary">Добавить</a>
     @if (Model.Persons.Count() > 0)
     {
         <div class="row">

@@ -17,7 +17,7 @@ namespace RioCourseWork.Data
             await _context.Records.AddAsync(model);
             await _context.SaveChangesAsync();
         }
-        public async Task<Person> GetPersons(int id) => await _context.Persons.FindAsync(id);
+        public async Task<Person> GetPerson(int id) => await _context.Persons.FindAsync(id);
         public async Task CreatePerson(Person person)
         {
             await _context.Persons.AddAsync(person);

@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RioCourseWork.Data;
 using RioCourseWork.Models;
@@ -16,9 +15,12 @@ namespace RioCourseWork.Areas.MainArea.Workers
 
         public Person person { get; set; } = new Person();
 
-        public async Task OnGetAsync(Person person)
+        public void OnGetAsync()
         {
-            await repo.CreatePerson(person)
+        }
+        public async Task OnPostCreateAsync(Person model)
+        {
+            await repo.CreatePerson(person);
         }
     }
 }

@@ -13,10 +13,10 @@ namespace RioCourseWork.Areas.MainArea.Workers
             this.repo = repo;
         }
 
-        public Person person { get; set; }
+        public Person person { get; set; } = new();
         public async Task OnGetAsync(int id)
         {
-            person = await repo.GetPersons(id);
+            person = await repo.GetPerson(id);
         }
     }
 }
