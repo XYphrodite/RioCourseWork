@@ -6,7 +6,7 @@ using System;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +31,7 @@ internal class Program
         using (var scope = app.Services.CreateScope())
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
-            Initializer.Initialize(dbContext);
+            await Initializer.Initialize(dbContext);
         }
         //var cxt = app.Services.GetRequiredService<ApplicationContext>();
         //Initializer.Initialize(cxt);
