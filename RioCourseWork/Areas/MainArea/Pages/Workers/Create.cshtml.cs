@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RioCourseWork.Data;
 using RioCourseWork.Models;
@@ -15,12 +16,14 @@ namespace RioCourseWork.Areas.MainArea.Workers
 
         public Person person { get; set; } = new Person();
 
-        public void OnGetAsync()
+        public IActionResult OnGetAsync()
         {
+            return Page();
         }
-        public async Task OnPostCreateAsync(Person model)
+        public IActionResult OnPostAdd(string Name)
         {
-            await repo.CreatePerson(person);
+            return RedirectToAction("Index", "Home");
+            //await repo.CreatePerson(person);
         }
     }
 }

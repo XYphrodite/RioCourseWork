@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using RioCourseWork.Data;
@@ -12,7 +13,11 @@ internal class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        builder.Services.AddRazorPages();
+        builder.Services.AddRazorPages(options =>
+        {
+            // отключаем глобально Antiforgery-токен
+            options.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());
+        });
         builder.Services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("myConnection")));
         builder.Services.AddTransient<Repository>();
@@ -33,11 +38,10 @@ internal class Program
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
             await Initializer.Initialize(dbContext);
         }
-        //var cxt = app.Services.GetRequiredService<ApplicationContext>();
-        //Initializer.Initialize(cxt);
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+
 
         app.UseRouting();
 
