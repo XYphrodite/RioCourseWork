@@ -5,6 +5,7 @@ using RioCourseWork.Models;
 
 namespace RioCourseWork.Areas.MainArea.Workers
 {
+    [IgnoreAntiforgeryToken]
     public class CreateModel : PageModel
     {
         private readonly Repository repo;
@@ -20,6 +21,7 @@ namespace RioCourseWork.Areas.MainArea.Workers
         }
         public IActionResult OnPostAdd()
         {
+            Console.WriteLine("123e123e ");
             return RedirectToAction("Index", "Home");
             //await repo.CreatePerson(person);
         }

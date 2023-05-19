@@ -4,14 +4,13 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
-    <h3 class="text-center">Добавление нового сотрудника</h3>
-    <form method="post" enctype="multipart/form-data">
-        <label class="form-label">Имя:</label>
-        <input class="form-control" name="Name" />
-        <label class="form-label">Фамилия:</label>
-@*        <input class="form-control" na />*@
-        <br />
-        <input type="submit" value="Подтвердить" class="btn btn-success" asp-page-handler="AddAsync"/>
-    </form>
-</div>
+
+<h3 class="text-center">Добавление нового сотрудника</h3>
+<form method="post">
+    <label class="form-label">Имя:</label>
+    <input class="form-control" name="Name" />
+    <label class="form-label">Фамилия:</label>
+    <br />
+    <input type="submit" value="Подтвердить" class="btn btn-success"/>
+</form>
+
