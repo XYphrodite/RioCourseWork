@@ -2,14 +2,7 @@
 {
     public class Initializer
     {
-        private readonly ApplicationContext context;
-
-        public Initializer(ApplicationContext context)
-        {
-            this.context = context;
-        }
-
-        public async void Initialize()
+        public static async void Initialize(ApplicationContext context)
         {
             await context.Database.EnsureDeletedAsync();
             await context.Database.EnsureCreatedAsync();

@@ -10,6 +10,8 @@ namespace RioCourseWork.Data
         //public DbSet<Position> Positions;
         public ApplicationContext(DbContextOptions options) : base(options)
         {
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
     }
 }

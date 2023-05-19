@@ -12,5 +12,10 @@ namespace RioCourseWork.Data
             _context = context;
         }
         public async Task<IEnumerable<Person>> GetPersons() => await _context.Persons.ToListAsync();
+        public async Task AddRecord(Record model)
+        {
+            await _context.Records.AddAsync(model);
+            await _context.SaveChangesAsync();
+        }
     }
 }
