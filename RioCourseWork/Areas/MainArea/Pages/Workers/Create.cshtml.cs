@@ -19,11 +19,10 @@ namespace RioCourseWork.Areas.MainArea.Workers
         {
             return Page();
         }
-        public IActionResult OnPostAdd()
+        public async Task<IActionResult> OnPostAddAsync(Person person)
         {
-            Console.WriteLine("123e123e ");
+            await repo.CreatePerson(person);
             return RedirectToAction("Index", "Home");
-            //await repo.CreatePerson(person);
         }
     }
 }

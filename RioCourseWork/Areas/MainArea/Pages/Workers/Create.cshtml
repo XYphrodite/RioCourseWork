@@ -7,10 +7,11 @@
 
 <h3 class="text-center">Добавление нового сотрудника</h3>
 <form method="post">
-    <label class="form-label">Имя:</label>
-    <input class="form-control" name="Name" />
+    <label class="form-label" >Имя:</label>
+    <input class="form-control" asp-for="@Model.person.Name" />
     <label class="form-label">Фамилия:</label>
+    <input class="form-control" asp-for="@Model.person.Surname" />
     <br />
-    <input type="submit" value="Подтвердить" class="btn btn-success"/>
+    <input type="submit" value="Подтвердить" class="btn btn-success" asp-page-handler="Add"/>
 </form>
 
