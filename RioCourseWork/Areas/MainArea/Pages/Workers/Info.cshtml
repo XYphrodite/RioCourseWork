@@ -1,4 +1,72 @@
-﻿@page
+﻿@page "{id?}"
 @model RioCourseWork.Areas.MainArea.Pages.Workers.InfoModel
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #info {
+        border-bottom: 5px solid black;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+        #info label {
+            font-size: 20px;
+            text-align: center;
+        }
+
+    #RefreshArea {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-bottom: 5px solid black;
+        margin-bottom:24px;
+    }
+</style>
+<h2 class="text-center">Инофрмация о личности</h2>
+<div id="info">
+    <label>Имя: @(Model.Person.Name)</label>
+    <label>Фамилия: @(Model.Person.Surname)</label>
+    <label>Id: @(Model.Person.Id)</label>
+    @if (Model.Person.RfIdKeys.Count != 0)
+    {
+        for (int i = 0; i < Model.Person.RfIdKeys.Count; i++)
+        {
+            <label>Ключ номер @(i + 1): @(Model.Person.RfIdKeys[i].Value)</label>
+        }
+    }
+    else
+    {
+        <label class="text-danger">Нет ключей</label>
+    }
+</div>
+<div id="RefreshArea">
+    <h4 class="text-center">Журнал</h4>
+    @if (Model.Person.Records.Count != 0)
+    {
+        @foreach (var items in Model.Person.Records)
+        {
+            <label>@items.ToString()</label>
+        }
+    }
+    else
+    {
+        <label class="text-center text-danger">Нет записей</label>
+    }
+</div>
+<form method="post">
+    <input value="Удалить" type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@Model.Person.Id"/>
+</form>
+
+
+@section Scripts{
+    <script>
+        function Update() {
+            $('#RefreshArea').load(location.href + ' #RefreshArea > *')
+        }
+
+        setInterval(Update, 3000);
+    </script>
 }

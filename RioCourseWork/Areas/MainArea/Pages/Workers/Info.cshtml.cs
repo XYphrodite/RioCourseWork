@@ -1,12 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RioCourseWork.Data;
+using RioCourseWork.Models;
 
 namespace RioCourseWork.Areas.MainArea.Pages.Workers
 {
     public class InfoModel : PageModel
     {
-        public void OnGet()
+        private readonly Repository repo;
+        public Person Person { get; set; }
+
+        public InfoModel(Repository repo)
         {
+            this.repo = repo;
+        }
+
+        public async Task OnGetAsync(int id)
+        {
+            Person = await repo.GetPerson(id);
+        }
+
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            await repo.DeletePerson(id);
+            return RedirectToPage("List");
         }
     }
 }

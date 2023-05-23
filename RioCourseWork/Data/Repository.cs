@@ -23,5 +23,14 @@ namespace RioCourseWork.Data
             await _context.Persons.AddAsync(person);
             await _context.SaveChangesAsync();
         }
+        internal async Task DeletePerson(int id)
+        {
+            var person = await _context.Persons.FindAsync(id);
+            if (person != null)
+            {
+                _context.Persons.Remove(person);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

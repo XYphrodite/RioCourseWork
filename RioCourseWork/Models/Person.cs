@@ -9,6 +9,7 @@ namespace RioCourseWork.Models
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-        public List<Record> Records { get; set; } = new();
+        public List<RfIdKey> RfIdKeys { get; set; } = new();
+        public List<Record> Records = new();
     }
 }

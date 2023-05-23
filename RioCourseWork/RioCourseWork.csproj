@@ -7,21 +7,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\MainArea\Controllers\" />
-    <Folder Include="Areas\MainArea\Data\" />
-    <Folder Include="Areas\MainArea\Models\" />
-    <Folder Include="Areas\MainArea\Views\" />
+    <Compile Remove="Areas\MainArea\Controllers\**" />
+    <Compile Remove="Areas\MainArea\Data\**" />
+    <Compile Remove="Areas\MainArea\Models\**" />
+    <Compile Remove="Areas\MainArea\Views\**" />
+    <Content Remove="Areas\MainArea\Controllers\**" />
+    <Content Remove="Areas\MainArea\Data\**" />
+    <Content Remove="Areas\MainArea\Models\**" />
+    <Content Remove="Areas\MainArea\Views\**" />
+    <EmbeddedResource Remove="Areas\MainArea\Controllers\**" />
+    <EmbeddedResource Remove="Areas\MainArea\Data\**" />
+    <EmbeddedResource Remove="Areas\MainArea\Models\**" />
+    <EmbeddedResource Remove="Areas\MainArea\Views\**" />
+    <None Remove="Areas\MainArea\Controllers\**" />
+    <None Remove="Areas\MainArea\Data\**" />
+    <None Remove="Areas\MainArea\Models\**" />
+    <None Remove="Areas\MainArea\Views\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.Razor" Version="3.2.9" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Razor" Version="6.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.13" />
   </ItemGroup>
 

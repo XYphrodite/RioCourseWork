@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RioCourseWork.Data;
 
@@ -11,9 +12,11 @@ using RioCourseWork.Data;
 namespace RioCourseWork.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230523122352_AdRfId")]
+    partial class AdRfId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +54,19 @@ namespace RioCourseWork.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("RfIdKeyId")
+                    b.Property<int>("PersonId")
                         .HasColumnType("int");
+
+                    b.Property<string>("RFID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RfIdKeyId");
+                    b.HasIndex("PersonId");
 
                     b.ToTable("Records");
                 });
@@ -88,13 +95,13 @@ namespace RioCourseWork.Migrations
 
             modelBuilder.Entity("RioCourseWork.Models.Record", b =>
                 {
-                    b.HasOne("RioCourseWork.Models.RfIdKey", "RfIdKey")
+                    b.HasOne("RioCourseWork.Models.Person", "Person")
                         .WithMany("Records")
-                        .HasForeignKey("RfIdKeyId")
+                        .HasForeignKey("PersonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("RfIdKey");
+                    b.Navigation("Person");
                 });
 
             modelBuilder.Entity("RioCourseWork.Models.RfIdKey", b =>
@@ -110,12 +117,9 @@ namespace RioCourseWork.Migrations
 
             modelBuilder.Entity("RioCourseWork.Models.Person", b =>
                 {
-                    b.Navigation("RfIdKeys");
-                });
-
-            modelBuilder.Entity("RioCourseWork.Models.RfIdKey", b =>
-                {
                     b.Navigation("Records");
+
+                    b.Navigation("RfIdKeys");
                 });
 #pragma warning restore 612, 618
         }
