@@ -97,9 +97,12 @@ namespace RioCourseWork.Data
 
         internal async Task UpdatePerson(Person person)
         {
-            var model = await _context.Persons.FindAsync(person.Id);
+            var model = await _context.Persons
+                .Include(p => p.RfIdKey)
+                .FirstOrDefaultAsync(p => p.Id == person.Id);
             model.Name = person.Name;
             model.Surname = person.Surname;
+            model.RfIdKey.Value = person.RfIdKey.Value;
             await _context.SaveChangesAsync();
         }
     }
