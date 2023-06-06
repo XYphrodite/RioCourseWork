@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RioCourseWork.Models;
+using static RioCourseWork.Models.Record;
 
 namespace RioCourseWork.Data
 {
@@ -12,10 +13,20 @@ namespace RioCourseWork.Data
             _context = context;
         }
         public async Task<IEnumerable<Person>> GetPersons() => await _context.Persons.ToListAsync();
-        public async Task AddRecord(Record model)
+        public async Task<Record> AddRecord(string rfId)
         {
-            await _context.Records.AddAsync(model);
+            var key = await _context.RfIdKeys
+                .FirstOrDefaultAsync(k => k.Value == rfId);
+            if (key is null)
+                key = await AddKey(rfId);
+            var newRecord = new Record
+            {
+                RfIdKey = key,
+                Time = DateTime.Now,
+            };
+            await _context.Records.AddAsync(newRecord);
             await _context.SaveChangesAsync();
+            return newRecord;
         }
         public async Task<Person> GetPerson(int id) => await _context.Persons.FindAsync(id);
         public async Task CreatePerson(Person person)
@@ -32,5 +43,28 @@ namespace RioCourseWork.Data
                 await _context.SaveChangesAsync();
             }
         }
+        internal async Task<RfIdKey> AddKey(string key)
+        {
+            var model = new RfIdKey
+            {
+                Value = key
+            };
+            await _context.RfIdKeys.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model;
+        }
+        internal async Task<bool> CheckKey(string rfId)
+        {
+            await AddRecord(rfId);
+            var key = await _context.RfIdKeys.Include(k => k.Person)
+                .FirstOrDefaultAsync(k => k.Value == rfId);
+            if (key is not null)
+                if (key.Person is not null) return true;
+            return true;
+        }
+
+        internal async Task<List<Record>> GetRecords() => await _context.Records
+            .Include(r => r.RfIdKey.Person)
+            .ToListAsync();
     }
 }

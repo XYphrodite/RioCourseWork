@@ -3,3 +3,9 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@if(Model.records.Count!=0){
+    foreach(var record in Model.records)
+    {
+        <label>@record.Time</label>
+    }
+}

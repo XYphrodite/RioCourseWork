@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RioCourseWork.Data;
+using RioCourseWork.Models;
 
 namespace RioCourseWork.Controllers
 {
@@ -7,10 +9,14 @@ namespace RioCourseWork.Controllers
     [ApiController]
     public class RfidController : ControllerBase
     {
-        [HttpPost]
-        public async Task<bool> Check(string str)
+        public RfidController(Repository repo)
         {
-            return true;
+            Repo = repo;
         }
+
+        public Repository Repo { get; }
+
+        [HttpPost]
+        public async Task<string> Check([FromForm] string str) => await Repo.CheckKey(str) ? "1" : "0";
     }
 }

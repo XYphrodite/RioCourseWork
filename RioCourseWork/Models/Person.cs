@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RioCourseWork.Models
 {
@@ -9,7 +10,7 @@ namespace RioCourseWork.Models
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-        public List<RfIdKey> RfIdKeys { get; set; } = new();
+        public RfIdKey RfIdKey { get; set; } = new();
         public List<Record> Records = new();
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RioCourseWork.Data;
 
@@ -11,9 +12,11 @@ using RioCourseWork.Data;
 namespace RioCourseWork.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230606133212_nn3")]
+    partial class nn3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,7 +93,7 @@ namespace RioCourseWork.Migrations
             modelBuilder.Entity("RioCourseWork.Models.Record", b =>
                 {
                     b.HasOne("RioCourseWork.Models.RfIdKey", "RfIdKey")
-                        .WithMany()
+                        .WithMany("Records")
                         .HasForeignKey("RfIdKeyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -113,6 +116,11 @@ namespace RioCourseWork.Migrations
                 {
                     b.Navigation("RfIdKey")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("RioCourseWork.Models.RfIdKey", b =>
+                {
+                    b.Navigation("Records");
                 });
 #pragma warning restore 612, 618
         }
