@@ -9,16 +9,22 @@ namespace RioCourseWork.Areas.MainArea.Pages.Journal
     {
         private readonly Repository repo;
 
-        public List<Record> records { get; set; } = new List<Record>();
+        public List<JournalItem> journalItems { get; set; } = new();
 
         public ListModel(Repository repo)
         {
             this.repo = repo;
         }
 
-        public async void OnGet()
+        public async Task OnGet()
         {
-            records = await repo.GetRecords();
+            journalItems = await repo.GetJournalItems();
+        }
+
+        public async Task OnPostDeleteAsync(int id)
+        {
+            await repo.DeleteJournalItem(id);
+            await OnGet();
         }
     }
 }

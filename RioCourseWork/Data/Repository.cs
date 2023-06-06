@@ -18,15 +18,27 @@ namespace RioCourseWork.Data
             var key = await _context.RfIdKeys
                 .FirstOrDefaultAsync(k => k.Value == rfId);
             if (key is null)
-                key = await AddKey(rfId);
-            var newRecord = new Record
             {
-                RfIdKey = key,
-                Time = DateTime.Now,
-            };
-            await _context.Records.AddAsync(newRecord);
-            await _context.SaveChangesAsync();
-            return newRecord;
+                await _context.JournalItems.AddAsync(
+                    new JournalItem
+                    {
+                        Time = DateTime.Now,
+                        Value = rfId
+                    });
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var newRecord = new Record
+                {
+                    RfIdKey = key,
+                    Time = DateTime.Now,
+                };
+                await _context.Records.AddAsync(newRecord);
+                await _context.SaveChangesAsync();
+                return newRecord;
+            }
+            return null;
         }
         public async Task<Person> GetPerson(int id) => await _context.Persons.FindAsync(id);
         public async Task CreatePerson(Person person)
@@ -60,11 +72,23 @@ namespace RioCourseWork.Data
                 .FirstOrDefaultAsync(k => k.Value == rfId);
             if (key is not null)
                 if (key.Person is not null) return true;
-            return true;
+            return false;
         }
 
         internal async Task<List<Record>> GetRecords() => await _context.Records
             .Include(r => r.RfIdKey.Person)
             .ToListAsync();
+
+        internal async Task<List<JournalItem>> GetJournalItems() => await _context.JournalItems.ToListAsync();
+
+        internal async Task DeleteJournalItem(int id)
+        {
+            var item = await _context.JournalItems.FindAsync(id);
+            if (item is not null)
+            {
+                _context.JournalItems.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

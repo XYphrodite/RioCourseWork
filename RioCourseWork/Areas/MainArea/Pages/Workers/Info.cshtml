@@ -30,17 +30,6 @@
     <label>Имя: @(Model.Person.Name)</label>
     <label>Фамилия: @(Model.Person.Surname)</label>
     <label>Id: @(Model.Person.Id)</label>
-    @*    @if (Model.Person.RfIdKeys.Count != 0)
-    {
-    for (int i = 0; i < Model.Person.RfIdKeys.Count; i++)
-    {
-    <label>Ключ номер @(i + 1): @(Model.Person.RfIdKeys[i].Value)</label>
-    }
-    }
-    else
-    {
-    <label class="text-danger">Нет ключей</label>
-    }*@
     @if (Model.Person.RfIdKey != null)
     {
         <label>
