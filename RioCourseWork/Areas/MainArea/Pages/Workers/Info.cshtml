@@ -4,25 +4,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
-    #info {
+    form {
         border-bottom: 5px solid black;
         padding-bottom: 20px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-content: start;
         font-size: 20px;
+        margin-bottom:24px;
     }
 
         #info label {
             font-size: 20px;
-            text-align: center;
+            text-align: left;
         }
 
     #RefreshArea {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: left;
         border-bottom: 5px solid black;
+        margin-top: 24px;
         margin-bottom: 24px;
         font-size: 20px;
         background-color: rgba(255,255,255,0.125);
@@ -31,15 +33,20 @@
 </style>
 <h2 class="text-center">Инофрмация о личности</h2>
 <form id="info" method="post">
-    <label>Имя:</label>
+    <label class="form-label">Имя:</label>
     <input asp-for="@Model.Person.Name" class="form-control" />
-    <label>Фамилия:</label>
+    <label class="form-label">Фамилия:</label>
     <input asp-for="@Model.Person.Surname" class="form-control" />
-    <label>Id: @(Model.Person.Id)</label>
+    <label class="form-label">Id: @(Model.Person.Id)</label>
     <br />
     <label>RfId: </label>
     <input asp-for="@(Model.Person.RfIdKey.Value)" class="form-control mb-2" />
     <input type="submit" class="btn btn-outline-primary" value="Сохранить" asp-page-handler="Save" asp-route-id="@Model.Person.Id" />
+</form>
+<form method="post" enctype="multipart/form-data">
+    <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="img"/>
+    <br/>
+    <input type="submit" value="Загрузить фото" class="btn btn-outline-primary" asp-page-handler="UploadPhoto"/>
 </form>
 <div id="RefreshArea">
     <h4 class="text-center">Журнал</h4>
@@ -58,7 +65,6 @@
 <form method="post">
     <input value="Удалить" type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@Model.Person.Id" />
 </form>
-
 
 @section Scripts{
     <script>

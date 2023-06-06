@@ -30,5 +30,10 @@ namespace RioCourseWork.Areas.MainArea.Pages.Workers
             await repo.DeletePerson(id);
             return RedirectToPage("List");
         }
+        public async Task OnPostUploadPhotoAsync(IFormFile img, int id)
+        {
+
+            await OnGetAsync(id);
+        }
     }
 }
