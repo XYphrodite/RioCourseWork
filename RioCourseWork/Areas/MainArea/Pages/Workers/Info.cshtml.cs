@@ -19,7 +19,12 @@ namespace RioCourseWork.Areas.MainArea.Pages.Workers
         {
             Person = await repo.GetPerson(id);
         }
-
+        public async Task<IActionResult> OnPostSave(Person Person, int id)
+        {
+            Person.Id = id;
+            await repo.UpdatePerson(Person);
+            return RedirectToPage("List");
+        }
         public async Task<IActionResult> OnPostDelete(int id)
         {
             await repo.DeletePerson(id);

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RioCourseWork.Data;
 
@@ -11,9 +12,11 @@ using RioCourseWork.Data;
 namespace RioCourseWork.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230606152123_nn9")]
+    partial class nn9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,12 +77,17 @@ namespace RioCourseWork.Migrations
                     b.Property<int>("PersonId")
                         .HasColumnType("int");
 
+                    b.Property<int>("RfIdKeyId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PersonId");
+
+                    b.HasIndex("RfIdKeyId");
 
                     b.ToTable("Records");
                 });
@@ -115,7 +123,15 @@ namespace RioCourseWork.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("RioCourseWork.Models.RfIdKey", "RfIdKey")
+                        .WithMany()
+                        .HasForeignKey("RfIdKeyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Person");
+
+                    b.Navigation("RfIdKey");
                 });
 
             modelBuilder.Entity("RioCourseWork.Models.RfIdKey", b =>

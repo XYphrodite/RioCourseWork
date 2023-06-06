@@ -6,9 +6,7 @@ namespace RioCourseWork.Models
     {
         public int Id { get; set; }
         public DateTime Time { get; set; }
-        [AllowNull]
-        public int RfIdKeyId { get; set; }
-        [AllowNull]
-        public RfIdKey RfIdKey { get; set; }
+        public int PersonId { get; set; }
+        public Person Person { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page
-@model RioCourseWork.Areas.MainArea.Pages.Journal.ListModel
+@model RioCourseWork.Areas.MainArea.Pages.Records.ListModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,28 +9,27 @@
         font-size: 20px;
     }
 
-        #RefreshArea form {
+        #RefreshArea > div div{
             border-bottom: 2px solid gray;
-            padding:12px;
-            border-radius:12px;
-            background-color:rgba(0,0,0,0.25);
-            margin:12px;
+            padding: 12px;
+            border-radius: 12px;
+            background-color: rgba(0,0,0,0.25);
+            margin: 12px;
         }
 </style>
 
 <div id="RefreshArea">
-    @if (Model.journalItems.Count != 0)
+    @if (Model.records.Count != 0)
     {
         <div class="row">
-            @foreach (var record in Model.journalItems)
+            @foreach (var record in Model.records)
             {
-                <form class="col-12" method="post">
+                <div class="col-12" method="post">
                     <label>Время: @record.Time</label>
                     <br>
-                    <label>Значение: @record.Value</label>
+                    <label>Имя: @record.Person.FullName()</label>
                     <br>
-                    <input type="submit" value="Удалить" asp-page-handler="Delete" asp-route-id="@record.Id" class="btn btn-outline-danger" />
-                </form>
+                </div>
             }
         </div>
     }

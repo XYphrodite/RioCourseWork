@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using RioCourseWork.Data;
-using RioCourseWork.Models;
 
 namespace RioCourseWork.Controllers
 {

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RioCourseWork.Data;
 
@@ -11,9 +12,11 @@ using RioCourseWork.Data;
 namespace RioCourseWork.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20230606151627_nn8")]
+    partial class nn8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,10 @@ namespace RioCourseWork.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("PersonId")
+                    b.Property<int?>("PersonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RfIdKeyId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Time")
@@ -80,6 +86,8 @@ namespace RioCourseWork.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PersonId");
+
+                    b.HasIndex("RfIdKeyId");
 
                     b.ToTable("Records");
                 });
@@ -109,13 +117,17 @@ namespace RioCourseWork.Migrations
 
             modelBuilder.Entity("RioCourseWork.Models.Record", b =>
                 {
-                    b.HasOne("RioCourseWork.Models.Person", "Person")
+                    b.HasOne("RioCourseWork.Models.Person", null)
                         .WithMany("Records")
-                        .HasForeignKey("PersonId")
+                        .HasForeignKey("PersonId");
+
+                    b.HasOne("RioCourseWork.Models.RfIdKey", "RfIdKey")
+                        .WithMany()
+                        .HasForeignKey("RfIdKeyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Person");
+                    b.Navigation("RfIdKey");
                 });
 
             modelBuilder.Entity("RioCourseWork.Models.RfIdKey", b =>

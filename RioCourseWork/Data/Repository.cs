@@ -16,6 +16,7 @@ namespace RioCourseWork.Data
         public async Task<Record> AddRecord(string rfId)
         {
             var key = await _context.RfIdKeys
+                .Include(k => k.Person)
                 .FirstOrDefaultAsync(k => k.Value == rfId);
             if (key is null)
             {
@@ -31,8 +32,8 @@ namespace RioCourseWork.Data
             {
                 var newRecord = new Record
                 {
-                    RfIdKey = key,
                     Time = DateTime.Now,
+                    Person = key.Person
                 };
                 await _context.Records.AddAsync(newRecord);
                 await _context.SaveChangesAsync();
@@ -40,7 +41,10 @@ namespace RioCourseWork.Data
             }
             return null;
         }
-        public async Task<Person> GetPerson(int id) => await _context.Persons.FindAsync(id);
+        public async Task<Person> GetPerson(int id) => await _context.Persons
+            .Include(p => p.RfIdKey)
+            .Include(p => p.Records)
+            .FirstOrDefaultAsync(p => p.Id == id);
         public async Task CreatePerson(Person person)
         {
             await _context.Persons.AddAsync(person);
@@ -76,7 +80,7 @@ namespace RioCourseWork.Data
         }
 
         internal async Task<List<Record>> GetRecords() => await _context.Records
-            .Include(r => r.RfIdKey.Person)
+            .Include(r => r.Person)
             .ToListAsync();
 
         internal async Task<List<JournalItem>> GetJournalItems() => await _context.JournalItems.ToListAsync();
@@ -89,6 +93,14 @@ namespace RioCourseWork.Data
                 _context.JournalItems.Remove(item);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        internal async Task UpdatePerson(Person person)
+        {
+            var model = await _context.Persons.FindAsync(person.Id);
+            model.Name = person.Name;
+            model.Surname = person.Surname;
+            await _context.SaveChangesAsync();
         }
     }
 }
