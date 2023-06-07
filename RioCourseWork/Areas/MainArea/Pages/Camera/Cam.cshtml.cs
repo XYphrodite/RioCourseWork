@@ -7,7 +7,7 @@ namespace RioCourseWork.Areas.MainArea.Pages.Camera
 {
     public class CamModel : PageModel
     {
-        public IEnumerable<Person> people { get; set; }
+        public IEnumerable<Person> people { get; set; } = new List<Person>();
         private readonly Repository repo;
 
         public CamModel(Repository repo)
