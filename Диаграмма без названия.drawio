@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-07T03:46:23.641Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="brYS0mqKoxPIVtBCLaDd" version="20.8.22" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-07T03:48:35.205Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="KzXv4Wke0Fr4QzbE2MLC" version="20.8.22" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2876" dy="1131" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2514" dy="932" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -204,6 +204,9 @@
         <mxCell id="JAbAQ16eNPu53v8PzKWM-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JAbAQ16eNPu53v8PzKWM-62" target="JAbAQ16eNPu53v8PzKWM-70">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JAbAQ16eNPu53v8PzKWM-62" target="JAbAQ16eNPu53v8PzKWM-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="JAbAQ16eNPu53v8PzKWM-62" value="Репозиторий проверяет базу данных" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="154" y="1780" width="120" height="60" as="geometry" />
         </mxCell>
@@ -239,6 +242,37 @@
         </mxCell>
         <mxCell id="JAbAQ16eNPu53v8PzKWM-82" value="Ничего не происходит" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-17" y="2208" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-91" value="Нет" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="424" y="1889" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-92" value="Да" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="675" y="1889" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="JAbAQ16eNPu53v8PzKWM-96">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="1894" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="JAbAQ16eNPu53v8PzKWM-95">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="595" y="1894" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-95" value="Внесение данных об предоставление пропуска" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="686" y="1945" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-96" value="Ничего не происходит" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="364" y="1945" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-97" value="Метка зарегистрирована" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="467" y="1770" width="234" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-102" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="JAbAQ16eNPu53v8PzKWM-97">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="583" y="1894" as="sourcePoint" />
+            <mxPoint x="611" y="1999" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
