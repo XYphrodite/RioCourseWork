@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-07T03:18:02.652Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="NnCcG0NRdoGhGTv4wKv9" version="20.8.22" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-07T03:32:52.574Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="AeFCGN2VWZsF0lNkEROQ" version="20.8.22" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1434" dy="792" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -62,6 +62,48 @@
         </mxCell>
         <mxCell id="JAbAQ16eNPu53v8PzKWM-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="JAbAQ16eNPu53v8PzKWM-1" target="zkfFHV4jXpPFQw0GAbJ--3">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-20" value="Управление ресурсами и объектами БД" style="swimlane;whiteSpace=wrap;html=1;startSize=43;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="53" y="638" width="376" height="159" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-22" value="ПО: Классовые представления записей таблиц БД" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-20">
+          <mxGeometry x="2" y="44" width="301" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-23" value="Сервис для добавления, удаления, получения, редактирования&lt;br&gt;записей" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-20">
+          <mxGeometry y="60" width="375" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-24" value="ИО: БД, строка подключения." style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-20">
+          <mxGeometry y="101" width="183" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-25" value="МетО: EntityFrameworkCore" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-20">
+          <mxGeometry y="127" width="172" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-26" value="Обработчики запросов" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="467" y="638" width="299" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-27" value="ПО: Обработчики запросов" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-26">
+          <mxGeometry y="24" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-28" value="ИО: Сервис управления базой данных" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-26">
+          <mxGeometry y="50" width="233" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-29" value="МетО: MVC, RazorPage, RestAPI" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-26">
+          <mxGeometry y="78" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-30" value="Представления" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="467" y="752" width="258" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-31" value="ПО: Скрипты и элементы кода для&lt;br&gt;&amp;nbsp;отображения данных в разметке HTML" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-30">
+          <mxGeometry y="25" width="239" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-33" value="ИО: Обработчики запросов с представления &lt;br&gt;или микроконтроллера" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-30">
+          <mxGeometry y="63" width="267" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-35" value="Техническое обеспечение" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="53" y="805" width="378" height="51" as="geometry" />
+        </mxCell>
+        <mxCell id="JAbAQ16eNPu53v8PzKWM-36" value="ОС с поддержкой Microsoft .NET Framework Core 6.0, ASP NET" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="JAbAQ16eNPu53v8PzKWM-35">
+          <mxGeometry y="25" width="368" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
