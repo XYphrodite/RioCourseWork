@@ -10,6 +10,7 @@ namespace RioCourseWork.Data
         public DbSet<Record> Records { get; set; }
         public DbSet<RfIdKey> RfIdKeys { get; set; }
         public DbSet<JournalItem> JournalItems { get; set; }
+        public DbSet<ImageModel> imageModels { get; set; }
         //public DbSet<Position> Positions;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

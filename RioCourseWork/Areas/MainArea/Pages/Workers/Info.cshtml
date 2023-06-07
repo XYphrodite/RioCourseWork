@@ -11,13 +11,13 @@
         flex-direction: column;
         align-content: start;
         font-size: 20px;
-        margin-bottom:24px;
+        margin-bottom: 24px;
     }
 
-        #info label {
-            font-size: 20px;
-            text-align: left;
-        }
+    #info label {
+        font-size: 20px;
+        text-align: left;
+    }
 
     #RefreshArea {
         display: flex;
@@ -28,7 +28,11 @@
         margin-bottom: 24px;
         font-size: 20px;
         background-color: rgba(255,255,255,0.125);
-        padding:12px;
+        padding: 12px;
+    }
+
+    img{
+        width:320px;
     }
 </style>
 <h2 class="text-center">Инофрмация о личности</h2>
@@ -44,9 +48,13 @@
     <input type="submit" class="btn btn-outline-primary" value="Сохранить" asp-page-handler="Save" asp-route-id="@Model.Person.Id" />
 </form>
 <form method="post" enctype="multipart/form-data">
-    <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="img"/>
-    <br/>
-    <input type="submit" value="Загрузить фото" class="btn btn-outline-primary" asp-page-handler="UploadPhoto"/>
+    @if (Model.HasPhoto)
+    {
+        <img src="~/Faces/@(Model.Person.Id).jpg" />
+    }
+    <input type="file" accept="image/png, image/gif, image/jpeg" class="form-control" name="img" />
+    <br />
+    <input type="submit" value="Загрузить фото" class="btn btn-outline-primary" asp-page-handler="UploadPhoto" />
 </form>
 <div id="RefreshArea">
     <h4 class="text-center">Журнал</h4>
@@ -71,7 +79,6 @@
         function Update() {
             $('#RefreshArea').load(location.href + ' #RefreshArea > *')
         }
-
         setInterval(Update, 3000);
     </script>
 }

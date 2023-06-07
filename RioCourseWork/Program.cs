@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using RioCourseWork.Data;
+using RioCourseWork.Services;
 using System;
 
 internal class Program
@@ -21,6 +22,7 @@ internal class Program
         builder.Services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("myConnection")));
         builder.Services.AddTransient<Repository>();
+        builder.Services.AddTransient<FaceControlling>();
 
         var app = builder.Build();
 
