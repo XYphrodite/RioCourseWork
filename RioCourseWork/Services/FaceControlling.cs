@@ -29,5 +29,7 @@ namespace RioCourseWork.Services
             FileInfo f = new FileInfo(Path.Combine(webHostEnvironment.WebRootPath, "Faces", id.ToString() + ".jpg"));
             return f.Exists;
         }
+
+
     }
 }

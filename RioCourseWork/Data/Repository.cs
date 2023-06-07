@@ -33,7 +33,8 @@ namespace RioCourseWork.Data
                 var newRecord = new Record
                 {
                     Time = DateTime.Now,
-                    Person = key.Person
+                    Person = key.Person,
+                    type = Record.Type.Key
                 };
                 await _context.Records.AddAsync(newRecord);
                 await _context.SaveChangesAsync();
@@ -103,6 +104,18 @@ namespace RioCourseWork.Data
             model.Name = person.Name;
             model.Surname = person.Surname;
             model.RfIdKey.Value = person.RfIdKey.Value;
+            await _context.SaveChangesAsync();
+        }
+
+        internal async Task CamOpen(int id)
+        {
+            var p = await _context.Persons.FindAsync(id);
+            await _context.Records.AddAsync(new Record
+            {
+                Person = p,
+                type = Record.Type.Camera,
+                Time = DateTime.Now
+            });
             await _context.SaveChangesAsync();
         }
     }

@@ -8,5 +8,12 @@ namespace RioCourseWork.Models
         public DateTime Time { get; set; }
         public int PersonId { get; set; }
         public Person Person { get; set; }
+        public Type type { get; set; }
+
+        public enum Type : byte
+        {
+            Key,
+            Camera
+        }
     }
 }

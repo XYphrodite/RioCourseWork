@@ -62,7 +62,7 @@
     {
         @foreach (var items in Model.Person.Records)
         {
-            <label>@items.Time</label>
+            <label>@items.Time — @items.type</label>
         }
     }
     else

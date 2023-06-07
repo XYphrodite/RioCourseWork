@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace RioCourseWork.Controllers
 {
@@ -7,10 +6,22 @@ namespace RioCourseWork.Controllers
     [ApiController]
     public class FaceController : ControllerBase
     {
-        [HttpPost]
-        public string Check([FromForm] IFormFile imageFile)
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        public FaceController(IWebHostEnvironment webHostEnvironment)
         {
-            return "Test";
+            this.webHostEnvironment = webHostEnvironment;
+        }
+
+        [HttpPost]
+        public async Task<string> CheckAsync([FromForm] IFormFile imageFile)
+        {
+            var path = Path.Combine(webHostEnvironment.WebRootPath, "Cam", "o.jpg");
+            using (var memoryStream = new FileStream(path, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(memoryStream);
+            }
+            return "Ok";
         }
     }
 }

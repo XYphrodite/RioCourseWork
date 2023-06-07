@@ -51,4 +51,8 @@
     <PackageReference Include="VisioForge.DotNet.Core.TRIAL" Version="15.1.12" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Cam\" />
+  </ItemGroup>
+
 </Project>

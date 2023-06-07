@@ -1,0 +1,47 @@
+﻿@page
+@model RioCourseWork.Areas.MainArea.Pages.Camera.CamModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<DOCTYPE>
+    <html>
+    <head>
+        <meta http-equiv="refresh" content="1">
+@*        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />*@
+        <script>
+            function Update() {
+                $('#RefreshArea').load(location.href + ' #RefreshArea > *')
+            }
+            setInterval(Update, 250);
+        </script>
+        <style>
+            #cam {
+                background-color: rgba(0,0,0,0.45);
+                display: flex;
+                flex-direction: row;
+            }
+
+            form {
+                border: 1px solid black;
+                display:flex;
+                justify-content:space-between;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="cam">
+            <div id="RefreshArea">
+                <img src="~/Cam/o.jpg" />
+            </div>
+            <div>
+                @foreach (var p in Model.people)
+                {
+                    <form method="post">
+                        <label>@p.FullName()</label>
+                        <input value="Открыть" type="submit" asp-route-id="@p.Id" asp-page-handler="Open" class="btn btn-primary">
+                    </form>
+                }
+            </div>
+        </div>
+    </body>
+</html>
