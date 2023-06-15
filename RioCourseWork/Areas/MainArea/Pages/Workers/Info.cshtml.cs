@@ -23,12 +23,12 @@ namespace RioCourseWork.Areas.MainArea.Pages.Workers
 
         public async Task OnGetAsync(int id)
         {
-            Person = await repo.GetPerson(id);
+            //Person = await repo.GetPerson(id);
             HasPhoto = faceRecognizer.Check(id);
         }
         public async Task<IActionResult> OnPostSave(Person Person, int id)
         {
-            Person.Id = id;
+            //Person.Id = id;
             await repo.UpdatePerson(Person);
             return RedirectToPage("List");
         }

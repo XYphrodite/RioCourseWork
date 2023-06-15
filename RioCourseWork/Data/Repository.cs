@@ -42,10 +42,10 @@ namespace RioCourseWork.Data
             }
             return null;
         }
-        public async Task<Person> GetPerson(int id) => await _context.Persons
-            .Include(p => p.RfIdKey)
-            .Include(p => p.Records)
-            .FirstOrDefaultAsync(p => p.Id == id);
+        //public async Task<Person> GetPerson(int id) => await _context.Persons
+        //    .Include(p => p.RfIdKey)
+        //    .Include(p => p.Records)
+        //    .FirstOrDefaultAsync(p => p.Id == id);
         public async Task CreatePerson(Person person)
         {
             await _context.Persons.AddAsync(person);
