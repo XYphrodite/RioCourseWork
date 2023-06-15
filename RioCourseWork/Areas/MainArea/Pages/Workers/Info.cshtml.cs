@@ -21,14 +21,14 @@ namespace RioCourseWork.Areas.MainArea.Pages.Workers
             this.faceRecognizer = faceRecognizer;
         }
 
-        public async Task OnGetAsync(int id)
+        public async Task OnGetAsync(Guid id)
         {
-            //Person = await repo.GetPerson(id);
-            HasPhoto = faceRecognizer.Check(id);
+            Person = await repo.GetPerson(id);
+            //HasPhoto = faceRecognizer.Check(id);
         }
-        public async Task<IActionResult> OnPostSave(Person Person, int id)
+        public async Task<IActionResult> OnPostSave(Person Person, Guid id)
         {
-            //Person.Id = id;
+            Person.Id = id;
             await repo.UpdatePerson(Person);
             return RedirectToPage("List");
         }
@@ -37,7 +37,7 @@ namespace RioCourseWork.Areas.MainArea.Pages.Workers
             await repo.DeletePerson(id);
             return RedirectToPage("List");
         }
-        public async Task OnPostUploadPhotoAsync(IFormFile img, int id)
+        public async Task OnPostUploadPhotoAsync(IFormFile img, Guid id)
         {
             if (img is null)
                 return;

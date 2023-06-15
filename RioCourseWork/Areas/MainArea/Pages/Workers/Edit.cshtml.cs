@@ -14,9 +14,9 @@ namespace RioCourseWork.Areas.MainArea.Workers
         }
 
         public Person person { get; set; } = new();
-        public async Task OnGetAsync(int id)
+        public async Task OnGetAsync(Guid id)
         {
-            //person = await repo.GetPerson(id);
+            person = await repo.GetPerson(id);
         }
     }
 }
