@@ -1,10 +1,4 @@
-﻿using Emgu.CV.Structure;
-using Emgu.CV;
-using System.Drawing;
-using System.Drawing.Imaging;
-using VisioForge.MediaFramework.Helpers;
-
-namespace RioCourseWork.Services
+﻿namespace RioCourseWork.Services
 {
     public class FaceControlling
     {
